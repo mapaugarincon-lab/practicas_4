@@ -1,0 +1,101 @@
+order_id,order_date,table,channel,dish_name,category,quantity,unit_price,total,waiter,paid
+1,2024-01-08,2,Salon,Pizza hawaiana,Pizza,3,40310.55,120931.65,Sofia,Si
+2,2024-02-22,5,Salon,Sopa del dia,Sopas,6,38632.79,231796.74,Andres,Si
+3,2024-02-29,2,Domicilio,Ensalada Cesar,Ensaladas,2,36256.53,72513.06,Pedro,No
+4,2024-01-21,,Para llevar,Ensalada Cesar,Ensaladas,1,19095.79,19095.79,Andres,Si
+5,2024-01-15,,Salon,Ensalada Cesar,Ensaladas,5,15040.87,75204.35,Pedro,Si
+6,2024-01-07,,Domicilio,Perro caliente,Comida rapida,5,39472.35,197361.75,Sofia,No
+7,2024-01-30,4,Domicilio,Sopa del dia,Sopas,5,14590.36,72951.8,Laura,Si
+8,2024-01-12,4,Domicilio,Lasana,Pasta,5,23019.39,115096.95,Pedro,Si
+9,2024-02-05,4,Salon,Ensalada Cesar,Ensaladas,4,44085.86,176343.44,Pedro,Si
+10,2024-01-03,2,Domicilio,Pizza margarita,Pizza,1,39322.7,39322.7,Andres,No
+11,2024-02-19,,Para llevar,Lasana,Pasta,6,21242.69,127456.14,Laura,Si
+12,2024-02-12,5,Para llevar,Lasana,Pasta,3,34552.89,103658.67,Pedro,Si
+13,2024-01-28,3,Para llevar,Ensalada Cesar,Ensaladas,5,33663.52,168317.6,Laura,No
+14,2024-01-17,3,Para llevar,Pizza hawaiana,Pizza,4,33281.46,133125.84,Andres,Si
+15,2024-01-24,,Salon,Ensalada Cesar,Ensaladas,1,27850.82,27850.82,Laura,No
+16,2024-02-12,3,Salon,Hamburguesa clasica,Comida rapida,2,25008.99,50017.98,Sofia,Si
+17,2024-01-19,,Para llevar,Pizza hawaiana,Pizza,6,28606.04,171636.24,Andres,Si
+18,2024-01-24,,Para llevar,Perro caliente,Comida rapida,3,25650.3,76950.9,Pedro,No
+19,2024-02-14,,Salon,Sopa del dia,Sopas,2,36071.24,72142.48,Sofia,Si
+20,2024-02-20,5,Para llevar,Ensalada Cesar,Ensaladas,6,31860.77,191164.62,Pedro,Si
+21,2024-01-21,4,Salon,Hamburguesa clasica,Comida rapida,1,12596.84,12596.84,Sofia,Si
+22,2024-01-24,,Para llevar,Pizza hawaiana,Pizza,4,28837.25,115349.0,Andres,Si
+23,2024-01-15,5,Para llevar,Pizza margarita,Pizza,2,32818.46,65636.92,Sofia,No
+24,2024-01-06,5,Para llevar,Perro caliente,Comida rapida,4,24642.12,98568.48,Laura,Si
+25,2024-01-23,5,Para llevar,Hamburguesa clasica,Comida rapida,5,13485.14,67425.7,Sofia,No
+26,2024-01-11,1,Para llevar,Pizza hawaiana,Pizza,1,13134.55,13134.55,Laura,No
+27,2024-02-13,5,Para llevar,Sopa del dia,Sopas,6,23128.85,138773.1,Andres,No
+28,2024-01-24,1,Salon,Ensalada Cesar,Ensaladas,4,31531.74,126126.96,Sofia,No
+29,2024-02-10,,Salon,Pizza margarita,Pizza,4,17317.43,69269.72,Andres,Si
+30,2024-02-07,1,Domicilio,Sopa del dia,Sopas,2,15998.97,31997.94,Pedro,No
+31,2024-02-20,,Domicilio,Hamburguesa clasica,Comida rapida,3,13840.76,41522.28,Pedro,No
+32,2024-01-17,2,Salon,Sopa del dia,Sopas,4,16457.94,65831.76,Pedro,No
+33,2024-02-25,5,Domicilio,Sopa del dia,Sopas,3,23398.54,70195.62,Laura,Si
+34,2024-02-07,3,Para llevar,Hamburguesa clasica,Comida rapida,4,15163.97,60655.88,Sofia,No
+35,2024-02-02,1,Salon,Ensalada Cesar,Ensaladas,3,29432.99,88298.97,Sofia,No
+36,2024-02-23,,Para llevar,Sopa del dia,Sopas,1,24144.64,24144.64,Laura,Si
+37,2024-01-09,,Para llevar,Lasana,Pasta,6,20886.54,125319.24,Laura,Si
+38,2024-02-05,,Domicilio,Lasana,Pasta,2,43973.44,87946.88,Pedro,Si
+39,2024-02-28,1,Domicilio,Lasana,Pasta,5,34577.82,172889.1,Pedro,Si
+40,2024-02-18,4,Para llevar,Perro caliente,Comida rapida,5,22778.89,113894.45,Andres,Si
+41,2024-01-06,,Salon,Sopa del dia,Sopas,4,41229.0,164916.0,Laura,Si
+42,2024-02-23,5,Para llevar,Perro caliente,Comida rapida,5,21092.46,105462.3,Laura,No
+43,2024-02-01,3,Para llevar,Pizza hawaiana,Pizza,5,14364.34,71821.7,Laura,Si
+44,2024-02-23,,Domicilio,Lasana,Pasta,6,26400.91,158405.46,Pedro,Si
+45,2024-02-07,2,Para llevar,Pizza margarita,Pizza,6,25208.63,151251.78,Laura,Si
+46,2024-01-07,5,Domicilio,Hamburguesa clasica,Comida rapida,5,44943.68,224718.4,Sofia,Si
+47,2024-01-11,1,Para llevar,Ensalada Cesar,Ensaladas,3,20636.74,61910.22,Pedro,No
+48,2024-02-12,,Salon,Hamburguesa clasica,Comida rapida,1,20546.87,20546.87,Laura,Si
+49,2024-02-12,,Salon,Pizza hawaiana,Pizza,6,21746.51,130479.06,Andres,Si
+50,2024-01-13,1,Para llevar,Ensalada Cesar,Ensaladas,4,25477.92,101911.68,Pedro,Si
+51,2024-02-02,,Salon,Sopa del dia,Sopas,1,26520.68,26520.68,Andres,Si
+52,2024-02-18,2,Para llevar,Lasana,Pasta,1,27043.68,27043.68,Sofia,No
+53,2024-02-29,,Para llevar,Perro caliente,Comida rapida,6,14687.89,88127.34,Andres,No
+54,2024-01-20,2,Domicilio,Hamburguesa clasica,Comida rapida,6,39472.77,236836.62,Andres,No
+55,2024-02-05,,Salon,Ensalada Cesar,Ensaladas,2,17014.27,34028.54,Sofia,No
+56,2024-01-31,,Para llevar,Lasana,Pasta,1,44386.16,44386.16,Andres,Si
+57,2024-01-24,5,Salon,Pizza margarita,Pizza,5,31151.83,155759.15,Pedro,No
+58,2024-02-15,,Para llevar,Pizza margarita,Pizza,6,23111.75,138670.5,Sofia,Si
+59,2024-02-21,5,Salon,Perro caliente,Comida rapida,4,24587.29,98349.16,Andres,Si
+60,2024-01-31,3,Domicilio,Sopa del dia,Sopas,5,17346.43,86732.15,Laura,Si
+61,2024-01-23,2,Domicilio,Sopa del dia,Sopas,3,33555.7,100667.1,Sofia,No
+62,2024-02-13,1,Para llevar,Hamburguesa clasica,Comida rapida,3,28387.72,85163.16,Andres,Si
+63,2024-01-01,4,Para llevar,Pizza hawaiana,Pizza,3,23832.6,71497.8,Pedro,No
+64,2024-02-08,4,Para llevar,Ensalada Cesar,Ensaladas,4,17140.15,68560.6,Laura,Si
+65,2024-02-26,3,Para llevar,Pizza hawaiana,Pizza,3,15537.87,46613.61,Pedro,Si
+66,2024-02-09,,Domicilio,Pizza hawaiana,Pizza,6,39663.88,237983.28,Pedro,Si
+67,2024-01-02,2,Domicilio,Pizza hawaiana,Pizza,3,44698.67,134096.01,Andres,Si
+68,2024-02-13,2,Salon,Pizza margarita,Pizza,5,43073.83,215369.15,Andres,No
+69,2024-02-02,5,Domicilio,Ensalada Cesar,Ensaladas,6,36598.17,219589.02,Sofia,No
+70,2024-01-13,5,Salon,Hamburguesa clasica,Comida rapida,1,40907.51,40907.51,Sofia,Si
+71,2024-02-19,5,Para llevar,Hamburguesa clasica,Comida rapida,4,16508.47,66033.88,Laura,No
+72,2024-01-21,,Para llevar,Perro caliente,Comida rapida,6,40799.22,244795.32,Laura,Si
+73,2024-01-29,5,Domicilio,Pizza margarita,Pizza,2,26000.09,52000.18,Pedro,Si
+74,2024-01-08,,Salon,Pizza margarita,Pizza,6,19698.26,118189.56,Sofia,Si
+75,2024-02-18,,Domicilio,Lasana,Pasta,5,33829.1,169145.5,Laura,Si
+76,2024-02-07,1,Salon,Ensalada Cesar,Ensaladas,6,29516.07,177096.42,Pedro,Si
+77,2024-02-22,5,Para llevar,Pizza hawaiana,Pizza,5,18991.21,94956.05,Sofia,No
+78,2024-02-11,4,Salon,Perro caliente,Comida rapida,2,30395.55,60791.1,Sofia,Si
+79,2024-01-06,3,Salon,Ensalada Cesar,Ensaladas,6,35812.91,214877.46,Sofia,Si
+80,2024-01-23,4,Domicilio,Ensalada Cesar,Ensaladas,2,13025.98,26051.96,Laura,Si
+81,2024-01-06,,Domicilio,Ensalada Cesar,Ensaladas,2,39279.25,78558.5,Pedro,Si
+82,2024-01-31,,Domicilio,Hamburguesa clasica,Comida rapida,3,44192.63,132577.89,Andres,Si
+83,2024-01-31,2,Domicilio,Lasana,Pasta,3,17715.12,53145.36,Andres,Si
+84,2024-02-27,3,Salon,Sopa del dia,Sopas,1,25589.17,25589.17,Pedro,No
+85,2024-01-27,,Domicilio,Pizza margarita,Pizza,4,20402.45,81609.8,Sofia,No
+86,2024-01-15,1,Domicilio,Sopa del dia,Sopas,2,30928.23,61856.46,Sofia,No
+87,2024-01-14,4,Para llevar,Sopa del dia,Sopas,6,26545.46,159272.76,Andres,No
+88,2024-01-22,1,Domicilio,Lasana,Pasta,3,18198.7,54596.1,Andres,Si
+89,2024-01-07,,Salon,Sopa del dia,Sopas,6,20480.14,122880.84,Laura,Si
+90,2024-01-12,5,Para llevar,Perro caliente,Comida rapida,5,18885.77,94428.85,Sofia,Si
+91,2024-02-19,,Salon,Pizza margarita,Pizza,5,15660.03,78300.15,Sofia,Si
+92,2024-02-10,,Domicilio,Pizza hawaiana,Pizza,5,30947.36,154736.8,Pedro,No
+93,2024-02-07,3,Domicilio,Ensalada Cesar,Ensaladas,2,43375.14,86750.28,Andres,Si
+94,2024-01-14,,Para llevar,Sopa del dia,Sopas,6,43841.66,263049.96,Sofia,No
+95,2024-01-10,3,Domicilio,Lasana,Pasta,5,34999.7,174998.5,Sofia,Si
+96,2024-02-11,,Para llevar,Ensalada Cesar,Ensaladas,4,25495.51,101982.04,Laura,No
+97,2024-02-24,5,Salon,Pizza hawaiana,Pizza,2,17969.54,35939.08,Laura,Si
+98,2024-01-02,1,Domicilio,Ensalada Cesar,Ensaladas,1,15656.83,15656.83,Sofia,Si
+99,2024-02-24,1,Domicilio,Ensalada Cesar,Ensaladas,4,41745.79,166983.16,Andres,Si
+100,2024-01-20,,Salon,Hamburguesa clasica,Comida rapida,3,25852.75,77558.25,Andres,Si
