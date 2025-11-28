@@ -1,5 +1,4 @@
 import csv
-import unicodedata
 
 class ProcesarCSV:
 
@@ -11,10 +10,12 @@ class ProcesarCSV:
     def quitar_tildes(self, texto):
         if not isinstance(texto, str):
             return ""
-        return ''.join(
-            c for c in unicodedata.normalize('NFD', texto)
-            if unicodedata.category(c) != 'Mn'
-        )
+        reemplazos = {
+            "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
+            "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
+            "ñ": "n", "Ñ": "N"
+        }
+        return ''.join(reemplazos.get(c, c) for c in texto)
 
     def leer(self):
         try:
@@ -28,7 +29,6 @@ class ProcesarCSV:
 
     def limpiar(self):
         datos_limpios = []
-
         for fila in self.datos:
             nueva_fila = []
             for celda in fila:
@@ -37,7 +37,6 @@ class ProcesarCSV:
                 else:
                     nueva_fila.append(self.quitar_tildes(celda))
             datos_limpios.append(nueva_fila)
-
         self.datos = datos_limpios
         return datos_limpios
 
@@ -55,8 +54,8 @@ class ProcesarCSV:
 
 
 def main():
-    archivo_original = r'C:\Users\Aprendiz\Documents\PULLREQUEST\practicas_4\dataset6_restaurant_orders (3).csv'
-    archivo_limpio = r'C:\Users\Aprendiz\Documents\PULLREQUEST\practicas_4\dataset6_restaurant_orders_limpio.csv'
+    archivo_original = "practicas_4/dataset6_restaurant_orders (3).csv"
+    archivo_limpio = "practicas_4/dataset6_restaurant_orders_limpio.csv"
 
     procesador = ProcesarCSV(archivo_original, archivo_limpio)
 
