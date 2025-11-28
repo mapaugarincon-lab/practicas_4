@@ -1,4 +1,5 @@
-
+import re
+leer_csv = "practicas_4\dataset6_restaurant_orders (3).csv"
 def total_clientes(datos):
     return len(datos) - 1 if len(datos) > 0 else 0
 def ingresos_totales(datos, indice_valor=None):
