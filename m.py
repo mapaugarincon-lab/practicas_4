@@ -1,148 +1,134 @@
 import csv
-import unicodedata
 import re
 
-class ProcesarCSV:
-    def __init__(self, ruta_entrada, ruta_salida):
-        self.ruta_entrada = ruta_entrada
-        self.ruta_salida = ruta_salida
-        self.datos = []
-
-    def quitar_tildes(self, texto):
-        return ''.join(
-            c for c in unicodedata.normalize('NFD', texto)
-            if unicodedata.category(c) != 'Mn')
-
-    def formatear_miles(self, valor):
-        if not valor:
-            return ""
-        v = str(valor).strip()
-        v = re.sub(r"[^0-9.,-]", "", v) 
-        if "," in v and "." not in v:
-            v = v.replace(",", ".")
-        if "," in v and "." in v:
-            v = v.replace(",", "")
-        try:
-            numero = float(v)
-            return f"{numero:,.2f}"
-        except:
-            return valor
-    def leer(self):
-        with open(self.ruta_entrada, 'r', encoding='utf-8') as archivo:
-            reader = csv.reader(archivo)
-            self.datos = list(reader)
-        return self.datos
-
-    def limpiar(self):
-        datos_limpios = []
-        for fila in self.datos:
-            nueva = []
-            for celda in fila:
-                if celda is None or celda.strip() == "" or celda == "None":
-                    nueva.append("")
-                else:
-                    nueva.append(self.quitar_tildes(celda))
-            datos_limpios.append(nueva)
-        self.datos = datos_limpios
-        return self.datos
-    def guardar(self):
-        with open(self.ruta_salida, 'w', newline='', encoding='utf-8') as archivo:
-            writer = csv.writer(archivo)
-            writer.writerows(self.datos)
-    def imprimir(self):
-        for fila in self.datos:
-            print(",".join(fila))
 def leer_csv(nombre_archivo):
     with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
         reader = csv.reader(archivo)
         datos = list(reader)
     return datos
+
 def total_clientes(datos):
     return len(datos) - 1 if len(datos) > 0 else 0
-def ingresos_totales(datos, indice_valor=None):
+
+def ingresos_totales(datos, indice_total=8):
     total = 0.0
-
-    if not datos or len(datos) < 2:
-        return total
-    encabezado = datos[0]
-    if indice_valor is not None and 0 <= indice_valor < len(encabezado):
-        for fila in datos[1:]:
-            try:
-                celda = fila[indice_valor].strip()
-                celda_limpia = re.sub(r"[^0-9.,-]", "", celda)
-                if celda_limpia:
-                    if "," in celda_limpia and "." not in celda_limpia:
-                        celda_limpia = celda_limpia.replace(",", ".")
-                    valor = float(celda_limpia)
-                    total += valor
-            except (ValueError, IndexError):
-                continue
-    else:
-
-        for fila in datos[1:]:
-            for celda in fila:
-                celda = celda.strip()
-                celda_limpia = re.sub(r"[^0-9.,-]", "", celda)
-                if not celda_limpia:
-                    continue
-                if "," in celda_limpia and "." not in celda_limpia:
-                    celda_limpia = celda_limpia.replace(",", ".")
-                try:
-                    valor = float(celda_limpia)
-                    total += valor
-                    break 
-                except ValueError:
-                    continue
+    for fila in datos[1:]:
+        try:
+            celda = fila[indice_total].strip()
+            celda_limpia = re.sub(r"[^0-9.,-]", "", celda)
+            celda_limpia = celda_limpia.replace(",", ".")
+            total += float(celda_limpia)
+        except:
+            pass
     return total
-def plato_mas_consumido(datos, indice_plato=2):
-  
-    if not datos or len(datos) < 2:
-        return None, 0
 
+def plato_mas_consumido(datos, indice_plato=4):
     contador = {}
     for fila in datos[1:]:
         if len(fila) <= indice_plato:
             continue
         plato = fila[indice_plato].strip()
-        if not plato:
-            continue
-        contador[plato] = contador.get(plato, 0) + 1
-
+        if plato:
+            contador[plato] = contador.get(plato, 0) + 1
+    
     if not contador:
-        return None, 0
+        return None
+    return max(contador, key=contador.get)  
 
-    plato_top = max(contador, key=contador.get)
-    return plato_top, contador[plato_top]
+def pedidos_por_categoria(datos, indice_categoria=5):
+    categorias = {}
+    for fila in datos[1:]:
+        if len(fila) <= indice_categoria:
+            continue
+        cat = fila[indice_categoria].strip()
+        if cat:
+            categorias[cat] = categorias.get(cat, 0) + 1
+    return categorias
+
+def ventas_por_canal(datos, indice_canal=3, indice_total=8):
+    canales = {}
+    for fila in datos[1:]:
+        if len(fila) <= indice_total:
+            continue
+        canal = fila[indice_canal].strip()
+        celda = fila[indice_total].strip()
+        celda_limpia = re.sub(r"[^0-9.,-]", "", celda).replace(",", ".")
+        try:
+            valor = float(celda_limpia)
+        except:
+            valor = 0
+        canales[canal] = canales.get(canal, 0) + valor
+    return canales
+
+def empleado_mas_ventas(datos, indice_mesero=9, indice_total=8):
+    empleados = {}
+    for fila in datos[1:]:
+        empleado = fila[indice_mesero].strip()
+        total = float(re.sub(r"[^0-9.,-]", "", fila[indice_total]).replace(",", "."))
+        empleados[empleado] = empleados.get(empleado, 0) + total
+    return max(empleados, key=empleados.get)
+
+def empleado_con_mas_pedidos(datos, indice_mesero=9):
+    empleados = {}
+    for fila in datos[1:]:
+        emp = fila[indice_mesero].strip()
+        empleados[emp] = empleados.get(emp, 0) + 1
+    return max(empleados, key=empleados.get)
 
 def menu():
-    archivo_limpio = r'C:\Users\Aprendiz\Music\maria\27\dataset6_restaurant_orders_limpio.csv'
+    archivo_limpio = "practicas_4/dataset6_restaurant_orders_limpio.csv"
     datos = leer_csv(archivo_limpio)
 
     while True:
-        print("\nMenú de opciones:")
+        print("\n--- MENÚ PRINCIPAL ---")
         print("1. Total de clientes")
         print("2. Ingresos totales")
         print("3. Plato más consumido")
-        print("4. Salir")
-        opcion = input("Ingrese su opción: ")
+        print("4. Pedidos por categoría")
+        print("5. Ventas por canal")
+        print("6. Empleado con más ventas")
+        print("7. Empleado con más pedidos")
+        print("8. Salir")
+
+        opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
             print(f"Total de clientes: {total_clientes(datos)}")
+
         elif opcion == "2":
             ingresos = ingresos_totales(datos)
-            print(f"Ingresos totales: {ingresos:,.2f}")
-        elif opcion == "3":
-            nombre_plato, cantidad = plato_mas_consumido(datos, indice_plato=2)
-            if nombre_plato:
-                print(f"Plato más consumido: '{nombre_plato}' — {cantidad} pedidos")
-            else:
-                print("No se encontró ningún plato consumido.")
-        elif opcion == "4":
-            print("saliendo...")
-            break
-        else:
-            print("Opción inválida. Por favor, intente de nuevo.")
+            print(f"Ingresos totales: ${ingresos:,.2f}")
 
+        elif opcion == "3":
+            plato = plato_mas_consumido(datos)
+            print(f"Plato más consumido: {plato}")
+
+        elif opcion == "4":
+            categorias = pedidos_por_categoria(datos)
+            print("Pedidos por categoría:")
+            for cat, cant in categorias.items():
+                print(f" - {cat}: {cant} pedidos")
+
+        elif opcion == "5":
+            canales = ventas_por_canal(datos)
+            print("Ventas por canal:")
+            for canal, valor in canales.items():
+                print(f" - {canal}: ${valor:,.2f}")
+
+        elif opcion == "6":
+            emp = empleado_mas_ventas(datos)
+            print(f"Empleado con más ventas: {emp}")
+
+        elif opcion == "7":
+            emp = empleado_con_mas_pedidos(datos)
+            print(f"Empleado con más pedidos atendidos: {emp}")
+
+        elif opcion == "8":
+            print("Saliendo del menú...")
+            break
+
+        else:
+            print("Opción inválida.")
 
 if __name__ == "__main__":
     menu()

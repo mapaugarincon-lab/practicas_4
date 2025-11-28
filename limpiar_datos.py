@@ -51,8 +51,8 @@ class ProcesarCSV:
 
 
 def main():
-    archivo_original = r'C:\Users\Aprendiz\Music\maria\27\dataset6_restaurant_orders (3).csv'
-    archivo_limpio = r'C:\Users\Aprendiz\Music\maria\27\dataset6_restaurant_orders_limpio.csv'
+    archivo_original = "practicas_4/dataset6_restaurant_orders (3).csv"
+    archivo_limpio = "practicas_4/dataset6_restaurant_orders_limpio.csv"
 
     procesador = ProcesarCSV(archivo_original, archivo_limpio)
 
