@@ -1,7 +1,6 @@
 import csv
 import unicodedata
 
-
 class ProcesarCSV:
 
     def __init__(self, ruta_entrada, ruta_salida):
@@ -10,17 +9,22 @@ class ProcesarCSV:
         self.datos = []
 
     def quitar_tildes(self, texto):
+        if not isinstance(texto, str):
+            return ""
         return ''.join(
             c for c in unicodedata.normalize('NFD', texto)
             if unicodedata.category(c) != 'Mn'
         )
 
     def leer(self):
-        with open(self.ruta_entrada, 'r', encoding='utf-8') as archivo:
-            reader = csv.reader(archivo)
-            self.datos = list(reader)
-        return self.datos
-
+        try:
+            with open(self.ruta_entrada, 'r', encoding='utf-8') as archivo:
+                reader = csv.reader(archivo)
+                self.datos = list(reader)
+            return self.datos
+        except Exception as e:
+            print(f"Error leyendo archivo: {e}")
+            return []
 
     def limpiar(self):
         datos_limpios = []
@@ -28,7 +32,7 @@ class ProcesarCSV:
         for fila in self.datos:
             nueva_fila = []
             for celda in fila:
-                if celda == "None":
+                if celda in (None, "", "None"):
                     nueva_fila.append("")
                 else:
                     nueva_fila.append(self.quitar_tildes(celda))
@@ -36,31 +40,29 @@ class ProcesarCSV:
 
         self.datos = datos_limpios
         return datos_limpios
-    
- 
-    def guardar(self):
-        with open(self.ruta_salida, 'w', newline='', encoding='utf-8') as archivo:
-            writer = csv.writer(archivo)
-            writer.writerows(self.datos)
 
+    def guardar(self):
+        try:
+            with open(self.ruta_salida, 'w', newline='', encoding='utf-8') as archivo:
+                writer = csv.writer(archivo)
+                writer.writerows(self.datos)
+        except Exception as e:
+            print(f"Error guardando archivo: {e}")
 
     def imprimir(self):
         for fila in self.datos:
-            print(",".join([str(c) if c is not None else "None" for c in fila]))
-
+            print(",".join(fila))
 
 
 def main():
-    archivo_original = r'C:\Users\Aprendiz\Music\maria\27\dataset6_restaurant_orders (3).csv'
-    archivo_limpio = r'C:\Users\Aprendiz\Music\maria\27\dataset6_restaurant_orders_limpio.csv'
+    archivo_original = r'C:\Users\Aprendiz\Documents\PULLREQUEST\practicas_4\dataset6_restaurant_orders (3).csv'
+    archivo_limpio = r'C:\Users\Aprendiz\Documents\PULLREQUEST\practicas_4\dataset6_restaurant_orders_limpio.csv'
 
     procesador = ProcesarCSV(archivo_original, archivo_limpio)
-
 
     procesador.leer()
     procesador.limpiar()
     procesador.guardar()
-    
 
     print(f"Archivo limpio guardado como: {archivo_limpio}\n")
     procesador.imprimir()
