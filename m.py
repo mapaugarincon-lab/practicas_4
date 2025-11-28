@@ -1,91 +1,55 @@
+from leer import Leer_Archivo
+from funciones import Gestion_menu, ingresos_totales, plato_mas_consumido, pedidos_por_categoria, ventas_por_canal, empleado_mas_ventas, empleado_con_mas_pedidos
 
-def total_clientes(datos):
-    return len(datos) - 1 if len(datos) > 0 else 0
-def ingresos_totales(datos, indice_valor=None):
-    total = 0.0
+datos = Leer_Archivo.menu()
 
-    if not datos or len(datos) < 2:
-        return total
-    encabezado = datos[0]
-    if indice_valor is not None and 0 <= indice_valor < len(encabezado):
-        for fila in datos[1:]:
-            try:
-                celda = fila[indice_valor].strip()
-                celda_limpia = re.sub(r"[^0-9.,-]", "", celda)
-                if celda_limpia:
-                    if "," in celda_limpia and "." not in celda_limpia:
-                        celda_limpia = celda_limpia.replace(",", ".")
-                    valor = float(celda_limpia)
-                    total += valor
-            except (ValueError, IndexError):
-                continue
+while True:
+    print("-- MENÚ PRINCIPAL ---")
+    print("1. Total de clientes")
+    print("2. Ingresos totales")
+    print("3. Plato más consumido")
+    print("4. Pedidos por categoría")
+    print("5. Ventas por canal")
+    print("6. Empleado con más ventas")
+    print("7. Empleado con más pedidos")
+    print("8. Salir")
+
+    opcion = input("Seleccione una opción: ")
+
+    if opcion == "1":
+        print(f"Total de clientes: {Gestion_menu.total_clientes(datos)}")
+
+    elif opcion == "2":
+        ingresos = ingresos_totales(datos)
+        print(f"Ingresos totales: ${ingresos:,.2f}")
+
+    elif opcion == "3":
+        plato = plato_mas_consumido(datos)
+        print(f"Plato más consumido: {plato}")
+
+    elif opcion == "4":
+        categorias = pedidos_por_categoria(datos)
+        print("Pedidos por categoría:")
+        for cat, cant in categorias.items():
+            print(f" - {cat}: {cant} pedidos")
+
+    elif opcion == "5":
+        canales = ventas_por_canal(datos)
+        print("Ventas por canal:")
+        for canal, valor in canales.items():
+            print(f" - {canal}: ${valor:,.2f}")
+
+    elif opcion == "6":
+        emp = empleado_mas_ventas(datos)
+        print(f"Empleado con más ventas: {emp}")
+
+    elif opcion == "7":
+        emp = empleado_con_mas_pedidos(datos)
+        print(f"Empleado con más pedidos atendidos: {emp}")
+
+    elif opcion == "8":
+        print("Saliendo del menú...")
+        break
+
     else:
-
-        for fila in datos[1:]:
-            for celda in fila:
-                celda = celda.strip()
-                celda_limpia = re.sub(r"[^0-9.,-]", "", celda)
-                if not celda_limpia:
-                    continue
-                if "," in celda_limpia and "." not in celda_limpia:
-                    celda_limpia = celda_limpia.replace(",", ".")
-                try:
-                    valor = float(celda_limpia)
-                    total += valor
-                    break 
-                except ValueError:
-                    continue
-    return total
-def plato_mas_consumido(datos, indice_plato=2):
-  
-    if not datos or len(datos) < 2:
-        return None, 0
-
-    contador = {}
-    for fila in datos[1:]:
-        if len(fila) <= indice_plato:
-            continue
-        plato = fila[indice_plato].strip()
-        if not plato:
-            continue
-        contador[plato] = contador.get(plato, 0) + 1
-
-    if not contador:
-        return None, 0
-
-    plato_top = max(contador, key=contador.get)
-    return plato_top, contador[plato_top]
-
-def menu():
-    archivo_limpio = r'C:\Users\Aprendiz\Music\maria\27\dataset6_restaurant_orders_limpio.csv'
-    datos = leer_csv(archivo_limpio)
-
-    while True:
-        print("\nMenú de opciones:")
-        print("1. Total de clientes")
-        print("2. Ingresos totales")
-        print("3. Plato más consumido")
-        print("4. Salir")
-        opcion = input("Ingrese su opción: ")
-
-        if opcion == "1":
-            print(f"Total de clientes: {total_clientes(datos)}")
-        elif opcion == "2":
-            ingresos = ingresos_totales(datos)
-            print(f"Ingresos totales: {ingresos:,.2f}")
-        elif opcion == "3":
-            nombre_plato, cantidad = plato_mas_consumido(datos, indice_plato=2)
-            if nombre_plato:
-                print(f"Plato más consumido: '{nombre_plato}' — {cantidad} pedidos")
-            else:
-                print("No se encontró ningún plato consumido.")
-        elif opcion == "4":
-            print("saliendo...")
-            break
-        else:
-            print("Opción inválida. Por favor, intente de nuevo.")
-
-
-if __name__ == "__main__":
-    menu()
-
+        print("Opción inválida. Intente otra vez.")
